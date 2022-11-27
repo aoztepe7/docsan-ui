@@ -1,0 +1,18 @@
+.profile-container {
+    .box-profile {
+        .upload-button {
+            margin-top: 4px;
+        }
+    }
+
+    .profile-form {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+    }
+
+    .button-holder {
+        justify-content: space-around;
+    }
+}

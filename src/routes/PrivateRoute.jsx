@@ -2,25 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoute = () => {
-    const [currentUser, setCurrentUser] = useState(false);
+    const [currentUser, setCurrentUser] = useState(null);
     const [authenticated, setAuthenticated] = useState(false)
     const jwt_token = localStorage.getItem('token');
 
     useEffect(() => {
-        // const abortController = new AbortController();
-        // const requestOptions = { method: 'GET', headers: authHeader() };
-        // fetch('/users', requestOptions).then(handleResponse)
-        // firebase_app.auth().onAuthStateChanged(setCurrentUser);
-        // setAuthenticated(JSON.parse(localStorage.getItem("authenticated")))
-
-        // return function cleanup() {
-        //     abortController.abort();
-        // }
-    }, [jwt_token]);
+        var storedUserInfo = localStorage.getItem('user');
+        if (storedUserInfo != '' && storedUserInfo != null && jwt_token != '' && jwt_token != null) {
+            setCurrentUser(JSON.parse(storedUserInfo));
+            setAuthenticated(true);
+        }
+    }, []);
 
     return (
-        1 == 1 ? <Outlet /> : <Navigate to={"/login"} />);
-
+        currentUser !== null || authenticated || jwt_token ? <Outlet /> : <Navigate to={"/login"} />);
 }
 
 export default PrivateRoute;

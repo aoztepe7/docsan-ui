@@ -2,6 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import MainRoutes from './routes/MainRoutes';
 import './assets/sass/login.min.css';
 import './assets/sass/common.min.css';
+import './assets/sass/profile.min.css';
 
 
 function App() {

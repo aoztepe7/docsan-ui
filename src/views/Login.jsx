@@ -1,5 +1,8 @@
 import { toUnloading, toLoading } from '../utils/Loading';
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react';
+import { LogIn } from '../utils/ApiClient';
+import { toast } from 'react-toastify';
+
 
 
 const Login = () => {
@@ -7,11 +10,26 @@ const Login = () => {
     const email = useRef(null);
     const password = useRef(null);
 
+    useEffect(() => {
+        email.current.value = "john@doe.com";
+        password.current.value = "1234aaaa";
+    }, []);
+
     function submitForm(e) {
         e.preventDefault();
+        if (email.current.value == '' || password.current.value == '') {
+            toast.error('Please enter your mail and password');
+            return;
+        }
 
-        console.log(email.current.value);
-        console.log(password.current.value);
+        toLoading();
+        var request = {
+            mail: email.current.value,
+            password: password.current.value
+        }
+
+        LogIn(request);
+        toUnloading();
     }
 
     return (
@@ -57,10 +75,7 @@ const Login = () => {
                         </form>
 
                         <p className="mb-1">
-                            <a href="forgot-password.html">I forgot my password</a>
-                        </p>
-                        <p className="mb-0">
-                            <a href="register.html" className="text-center">Register a new membership</a>
+                            <a>I forgot my password</a>
                         </p>
                     </div>
                 </div>

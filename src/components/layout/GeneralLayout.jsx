@@ -7,18 +7,12 @@ import { ToastContainer } from 'react-toastify';
 const GeneralLayout = () => {
     return (
         <Fragment>
-            <div className="page-wrapper">
+            <div className="wrapper">
                 <div className="page-body-wrapper">
                     <Navbar />
                     <Sidebar />
-                    <div className="page-body">
-                        <div className="content-wrapper">
-                            <div className="content-header">
-                                <div className="container-fluid">
-                                    <Outlet />
-                                </div>
-                            </div>
-                        </div>
+                    <div className="content-wrapper">
+                        <Outlet />
                     </div>
                 </div>
             </div>

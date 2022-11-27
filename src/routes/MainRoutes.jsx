@@ -5,11 +5,16 @@ import { routes } from './LayoutRoutes';
 import Dashboard from '../views/Dashboard';
 import Login from '../views/Login';
 import Overlay from '../components/Overlay';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer } from 'react-toastify';
+
 
 const MainRoutes = () => {
 
     return (
         <>
+            <ToastContainer />
             <Overlay />
             <Routes>
                 <Route exact path='/' element={<PrivateRoute />} >
